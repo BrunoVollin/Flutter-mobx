@@ -6,15 +6,24 @@ part "controller.g.dart";
  * * $ flutter pub run build_runner build
  */
 
-
 class Controller = ControllerBase with _$Controller;
 
 abstract class ControllerBase with Store {
   @observable
-  int counter = 0;
+  String name = "";
+
+  @observable
+  String surname = "";
+
+  String get completeName => "$name $surname";
 
   @action
-  increment() {
-    counter = counter + 2;
+  changeName(String newName) {
+    name = newName;
+  }
+
+  @action
+  changeSurname(String newSurname) {
+    surname = newSurname;
   }
 }

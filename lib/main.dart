@@ -30,26 +30,31 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("widget.title"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Observer(builder: (_) {
-              return Text(
-                '${controller.counter}',
-                style: Theme.of(context).textTheme.headline4,
-              );
-            }),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TextField(
+                decoration: const InputDecoration(labelText: "Name"),
+                onChanged: controller.changeName,
+              ),
+              const SizedBox(height: 5),
+              TextField(
+                decoration: const InputDecoration(labelText: "Surname"),
+                onChanged: controller.changeSurname,
+              ),
+              const SizedBox(height: 5),
+              Observer(builder: (_) {
+                return Text("${controller.name} ${controller.surname}");
+              })
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          controller.increment!();
-          },
+        onPressed: () {},
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

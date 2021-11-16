@@ -9,18 +9,33 @@ part of 'controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$Controller on ControllerBase, Store {
-  final _$counterAtom = Atom(name: 'ControllerBase.counter');
+  final _$nameAtom = Atom(name: 'ControllerBase.name');
 
   @override
-  int get counter {
-    _$counterAtom.reportRead();
-    return super.counter;
+  String get name {
+    _$nameAtom.reportRead();
+    return super.name;
   }
 
   @override
-  set counter(int value) {
-    _$counterAtom.reportWrite(value, super.counter, () {
-      super.counter = value;
+  set name(String value) {
+    _$nameAtom.reportWrite(value, super.name, () {
+      super.name = value;
+    });
+  }
+
+  final _$surnameAtom = Atom(name: 'ControllerBase.surname');
+
+  @override
+  String get surname {
+    _$surnameAtom.reportRead();
+    return super.surname;
+  }
+
+  @override
+  set surname(String value) {
+    _$surnameAtom.reportWrite(value, super.surname, () {
+      super.surname = value;
     });
   }
 
@@ -28,11 +43,22 @@ mixin _$Controller on ControllerBase, Store {
       ActionController(name: 'ControllerBase');
 
   @override
-  dynamic increment() {
+  dynamic changeName(String newName) {
     final _$actionInfo = _$ControllerBaseActionController.startAction(
-        name: 'ControllerBase.increment');
+        name: 'ControllerBase.changeName');
     try {
-      return super.increment();
+      return super.changeName(newName);
+    } finally {
+      _$ControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic changeSurname(String newSurname) {
+    final _$actionInfo = _$ControllerBaseActionController.startAction(
+        name: 'ControllerBase.changeSurname');
+    try {
+      return super.changeSurname(newSurname);
     } finally {
       _$ControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -41,7 +67,8 @@ mixin _$Controller on ControllerBase, Store {
   @override
   String toString() {
     return '''
-counter: ${counter}
+name: ${name},
+surname: ${surname}
     ''';
   }
 }
