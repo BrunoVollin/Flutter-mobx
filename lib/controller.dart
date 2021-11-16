@@ -15,6 +15,7 @@ abstract class ControllerBase with Store {
   @observable
   String surname = "";
 
+  @computed
   String get completeName => "$name $surname";
 
   @action

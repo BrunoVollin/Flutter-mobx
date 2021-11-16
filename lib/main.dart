@@ -47,7 +47,7 @@ class MyHomePage extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               Observer(builder: (_) {
-                return Text("${controller.name} ${controller.surname}");
+                return Text(controller.completeName);
               })
             ],
           ),
